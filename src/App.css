@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.item-card {
+  padding: 20px;
+}
+
+button {
+  color: white;
+  background-color: rgb(0, 134, 34);
+}
