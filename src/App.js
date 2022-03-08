@@ -7,7 +7,6 @@ const items = [
   { name: "Pho", price: 15.99, description: "A deliecious Pho." },
 ];
 
-const cart = [];
 function ItemCard(props) {
   const [QTY, setQTY] = useState("");
   const [itemCount, setItemCount] = useState(1);
@@ -30,6 +29,7 @@ function ItemCards(props) {
   const [completeOrder, setCompleteOrder] = useState([]);
   return (
     <div className="container">
+      {completeOrder}
       {items.map((item, index) => {
         return (
           <ItemCard key={index} item={item} onAddItem={setCompleteOrder} />
@@ -68,10 +68,6 @@ function Item(props) {
       <div>{props.item.description}</div>
     </div>
   );
-}
-
-function ItemList() {
-  return <></>;
 }
 
 function App() {
