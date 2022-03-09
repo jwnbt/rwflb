@@ -36,9 +36,10 @@ function TimerContainer() {
   const handleStart = (timerSettings) => {
     setSettings(timerSettings);
   };
+  console.log(Object.keys(settings).length);
   return (
     <>
-      <Timer settings={settings} />
+      {Object.keys(settings).length !== 0 && <Timer settings={settings} />}
       <TimeInput onStart={handleStart} />
     </>
   );
@@ -46,20 +47,22 @@ function TimerContainer() {
 
 function Timer({ settings }) {
   const [startTime, setStartTime] = useState(settings.time);
-  const [restTime, setRessTime] = useState(settings.rest);
+  const [restTime, setRestTime] = useState(settings.rest);
   const [rounds, setRounds] = useState(settings.rounds);
   useEffect(() => {
     const intervalID = setInterval(() => {
-      setStartTime(startTime - 1);
+      startTime > 0 && setStartTime(startTime - 1);
+      startTime === 0 && restTime > 0 && setRestTime(restTime - 1);
+      startTime === 0 && restTime === 0 && rounds > 0 && setRounds(rounds - 1);
+      startTime === 0 && restTime === 0 && rounds > 0 && setStartTime(settings.time);
     }, 1000);
     return () => clearInterval(intervalID);
   });
   return (
     <>
-      {console.log(settings)}
-      {settings.time}
-      {startTime}
-      {rounds}
+      start: {startTime}
+      rest: {restTime}
+      rounds: {rounds}
     </>
   );
 }
