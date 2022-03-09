@@ -32,14 +32,13 @@ function TimeInput(props) {
 }
 
 function TimerContainer() {
-  const [settings, setSettings] = useState({});
+  const [settings, setSettings] = useState();
   const handleStart = (timerSettings) => {
     setSettings(timerSettings);
   };
-  console.log(Object.keys(settings).length);
   return (
     <>
-      {Object.keys(settings).length !== 0 && <Timer settings={settings} />}
+      {settings && <Timer settings={settings} />}
       <TimeInput onStart={handleStart} />
     </>
   );
@@ -55,6 +54,7 @@ function Timer({ settings }) {
       startTime === 0 && restTime > 0 && setRestTime(restTime - 1);
       startTime === 0 && restTime === 0 && rounds > 0 && setRounds(rounds - 1);
       startTime === 0 && restTime === 0 && rounds > 0 && setStartTime(settings.time);
+      startTime === 0 && restTime === 0 && rounds > 0 && setRestTime(settings.rest);
     }, 1000);
     return () => clearInterval(intervalID);
   });
