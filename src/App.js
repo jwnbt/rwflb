@@ -6,6 +6,11 @@ function TimeInput(props) {
   const [rest, setRest] = useState("");
   const [rounds, setRounds] = useState("");
   const handleSubmit = (e) => {
+    if (time === "") {
+      e.preventDefault();
+      alert("enter a time nitwit");
+      return;
+    }
     e.preventDefault();
     props.onStart({ time, rest, rounds });
     setTime("");
@@ -26,7 +31,7 @@ function TimeInput(props) {
       <input type="number" value={time} onChange={handleTimeChange} placeholder="start time" />
       <input type="number" value={rest} onChange={handleRestChange} placeholder="rest time" />
       <input type="number" value={rounds} onChange={handleRoundsChange} placeholder="how many rounds?" />
-      <input type="submit" />
+      <input className="submitbtn" type="submit" />
     </form>
   );
 }
