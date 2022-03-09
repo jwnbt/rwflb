@@ -6,7 +6,7 @@ function App() {
   const handleClick = () => {
     setText(Math.random());
   };
-  return <div onclick={handleClick}>{text}</div>;
+  return <div onClick={handleClick}>{text}</div>;
 }
 
 export default App;
