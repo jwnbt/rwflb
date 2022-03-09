@@ -22,7 +22,7 @@ function TimeInput(props) {
     setRounds(e.target.value);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="timer-form" onSubmit={handleSubmit}>
       <input type="number" value={time} onChange={handleTimeChange} placeholder="start time" />
       <input type="number" value={rest} onChange={handleRestChange} placeholder="rest time" />
       <input type="number" value={rounds} onChange={handleRoundsChange} placeholder="how many rounds?" />
@@ -37,10 +37,10 @@ function TimerContainer() {
     setSettings(timerSettings);
   };
   return (
-    <>
+    <div className="container">
       {settings && <Timer settings={settings} />}
       <TimeInput onStart={handleStart} />
-    </>
+    </div>
   );
 }
 
@@ -59,11 +59,11 @@ function Timer({ settings }) {
     return () => clearInterval(intervalID);
   });
   return (
-    <>
-      start: {startTime}
-      rest: {restTime}
-      rounds: {rounds}
-    </>
+    <div className="timer">
+      <div>start: {startTime}</div>
+      <div>rest: {restTime}</div>
+      <div>rounds: {rounds}</div>
+    </div>
   );
 }
 

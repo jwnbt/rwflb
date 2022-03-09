@@ -1,0 +1,14 @@
+.timer {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer-form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.container {
+  width: 50%;
+}
