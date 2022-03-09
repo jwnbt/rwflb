@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import randomWords from "randomWords";
+import { useState } from "react";
 import "./App.css";
 
 const items = [
@@ -72,13 +71,8 @@ function Item(props) {
 }
 
 function App() {
-  const [ranWrd, setRanWord] = useState("");
-  const handleClick = () => {
-    setRanWord(randomWords());
-  };
   return (
-    <div onClick={handleClick}>
-      {ranWrd}
+    <div>
       <ItemCards />
     </div>
   );
