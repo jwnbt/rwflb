@@ -1,19 +1,16 @@
-.timer {
-  display: flex;
-  flex-direction: column;
-}
-
-.timer-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
 .container {
   display: flex;
-  width: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
 }
 
 .submitbtn {
   background-color: green;
+}
+
+.timer-form {
+  display: inherit;
+  flex-direction: column;
 }
