@@ -50,7 +50,7 @@ function TimerContainer() {
   };
   return (
     <div className="container">
-      {showTimer && <Timer settings={settings} onTimerFinished={handleTimerFinished} />}
+      {showTimer ? <Timer settings={settings} onTimerFinished={handleTimerFinished} /> : "Start a timer"}
       <TimeInput onStart={handleStart} />
     </div>
   );
