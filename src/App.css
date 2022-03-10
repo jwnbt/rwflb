@@ -8,10 +8,16 @@
 
 .submitbtn {
   background-color: green;
+  color: white;
+  border-radius: 10px;
 }
 
 .timer-form {
   display: inherit;
   flex-direction: column;
   width: max-content;
+}
+
+.timer {
+  font-family: Consolas;
 }
