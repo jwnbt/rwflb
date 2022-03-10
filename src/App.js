@@ -38,18 +38,25 @@ function TimeInput(props) {
 
 function TimerContainer() {
   const [settings, setSettings] = useState();
+  const [showTimer, setShowTimer] = useState(false);
   const handleStart = (timerSettings) => {
     setSettings(timerSettings);
+    setShowTimer(true);
+  };
+  const handleTimerFinished = (timerHasFinished) => {
+    if (timerHasFinished) {
+      setShowTimer(false);
+    }
   };
   return (
     <div className="container">
-      {settings && <Timer settings={settings} />}
+      {showTimer && <Timer settings={settings} onTimerFinished={handleTimerFinished} />}
       <TimeInput onStart={handleStart} />
     </div>
   );
 }
 
-function Timer({ settings }) {
+function Timer({ settings, onTimerFinished }) {
   const [startTime, setStartTime] = useState(settings.time);
   const [restTime, setRestTime] = useState(settings.rest);
   const [rounds, setRounds] = useState(settings.rounds);
@@ -60,6 +67,7 @@ function Timer({ settings }) {
       startTime === 0 && restTime === 0 && rounds > 0 && setRounds(rounds - 1);
       startTime === 0 && restTime === 0 && rounds > 0 && setStartTime(settings.time);
       startTime === 0 && restTime === 0 && rounds > 0 && setRestTime(settings.rest);
+      onTimerFinished(rounds === 0);
     }, 1000);
     return () => clearInterval(intervalID);
   });

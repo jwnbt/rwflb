@@ -13,4 +13,5 @@
 .timer-form {
   display: inherit;
   flex-direction: column;
+  width: max-content;
 }
