@@ -5,13 +5,19 @@ function AddGoal({ onAdd }) {
   const [goal, setGoal] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd({ name: goal });
+    goal !== "" && onAdd({ name: goal });
     setGoal("");
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={goal} placeholder="enter a goal to track" onChange={(e) => setGoal(e.target.value)} />
-      <input type="submit" value="add" />
+      <input
+        className="input"
+        type="text"
+        value={goal}
+        placeholder="enter a goal to track"
+        onChange={(e) => setGoal(e.target.value)}
+      />
+      <input className="submitbtn" type="submit" value="add" />
     </form>
   );
 }
@@ -32,10 +38,10 @@ function Goals() {
         {goals.map((goal, index) => {
           return (
             <tr>
-              <td style={{ width: 100 }}>
+              <td style={{ width: "100%", fontSize: "20px" }}>
                 <Goal key={index} goalName={goal.name} />
               </td>
-              <td style={{ width: 100 }}>
+              <td style={{ width: "100%", fontSize: "20px" }}>
                 <button type="button">accomplished</button>
               </td>
             </tr>
