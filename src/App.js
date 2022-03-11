@@ -31,9 +31,12 @@ function Goals() {
   const handleAdd = (goal) => {
     setGoals((prevGoals) => [...prevGoals, goal]);
   };
+  const handleClick = (goalId) => {};
+
   return (
     <div className="console">
       <AddGoal onAdd={handleAdd} />
+      <div className="cur-goal-label">{"Current Goals Tracking"}</div>
       <table className="goal">
         {goals.map((goal, index) => {
           return (
@@ -42,7 +45,9 @@ function Goals() {
                 <Goal key={index} goalName={goal.name} />
               </td>
               <td style={{ width: "100%", fontSize: "20px" }}>
-                <button type="button">accomplished</button>
+                <button type="button" onClick={handleClick(index)}>
+                  accomplished
+                </button>
               </td>
             </tr>
           );
