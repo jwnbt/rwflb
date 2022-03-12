@@ -38,20 +38,22 @@ function Goals() {
       <AddGoal onAdd={handleAdd} />
       <div className="cur-goal-label">{"Current Goals Tracking"}</div>
       <table className="goal">
-        {goals.map((goal, index) => {
-          return (
-            <tr>
-              <td style={{ width: "100%", fontSize: "20px" }}>
-                <Goal key={index} goalName={goal.name} />
-              </td>
-              <td style={{ width: "100%", fontSize: "20px" }}>
-                <button type="button" onClick={handleClick(index)}>
-                  accomplished
-                </button>
-              </td>
-            </tr>
-          );
-        })}
+        <tbody>
+          {goals.map((goal, index) => {
+            return (
+              <tr key={index}>
+                <td style={{ width: "100%", fontSize: "20px" }}>
+                  <Goal goalName={goal.name} />
+                </td>
+                <td style={{ width: "100%", fontSize: "20px" }}>
+                  <button type="button" onClick={handleClick(index)}>
+                    done
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
