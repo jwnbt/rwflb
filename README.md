@@ -1,9 +1,9 @@
 # rwflb
 
-# This is a daily goal tracker app.
+This is a daily goal tracker app.
 
-# This app is hosted on Netlify.com.
+This app is hosted on Netlify.com.
 
-# Follow the link to view the app.
+Follow the link to view the app.
 
-https://wonderful-lovelace-495196.netlify.app
+[rwflb](https://wonderful-lovelace-495196.netlify.app)
