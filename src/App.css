@@ -1,6 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(138, 109, 156);
+  background-color: rgb(120, 103, 161);
   color: white;
 }
 
@@ -19,7 +19,6 @@ form {
 
 form input {
   font-size: 20px;
-  border-radius: 20px;
   border-color: gray;
   border: none;
 }
@@ -37,9 +36,6 @@ button {
   padding-bottom: 8px;
 }
 
-.console {
-}
-
 .console form {
   display: flex;
   flex-direction: row;
@@ -47,6 +43,13 @@ button {
 
 .console .input {
   width: 100%;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+.console .submitbtn {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding-left: 12px;
 }
 
 .console table {
