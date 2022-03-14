@@ -33,7 +33,7 @@ function GoalsConsole() {
       <AddAGoal onAdd={handleAdd} />
       <div className="label">
         {notDoneGoals.length === 0 && doneGoals.length === 0 && "strat tracking some daily goals!"}
-        {notDoneGoals.length === 0 ? "" : "not done goals"}
+        {notDoneGoals.length === 0 ? "" : "complete these goals to change your life!"}
       </div>
       <NotDoneGoalTable goals={notDoneGoals} onAction={handleClick} />
       <div className="label">{doneGoals.length === 0 ? "" : "done goals"}</div>
