@@ -26,13 +26,16 @@ function GoalsConsole() {
     goal.done = !goal.done;
     setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
   };
+  const notDoneGoals = goals.filter((g) => !g.done);
+  const doneGoals = goals.filter((g) => g.done);
+
   return (
     <div className="console">
       <AddAGoal onAdd={handleAdd} />
-      <div className="label">{"not done goals"}</div>
-      <NotDoneGoalTable goals={goals.filter((g) => !g.done)} onAction={handleClick} />
-      <div className="label">{"done goals"}</div>
-      <DoneGoalTable goals={goals.filter((g) => g.done)} onAction={handleClick} />
+      <div className="label">{notDoneGoals.length === 0 ? "" : "not done goals"}</div>
+      <NotDoneGoalTable goals={notDoneGoals} onAction={handleClick} />
+      <div className="label">{doneGoals.length === 0 ? "" : "done goals"}</div>
+      <DoneGoalTable goals={doneGoals} onAction={handleClick} />
     </div>
   );
 }
