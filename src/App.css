@@ -1,7 +1,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(120, 103, 161);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .app {
@@ -79,3 +79,8 @@ td {
   width: 100%;
   font-size: 20px;
 }
+/* 
+.goal-row {
+  background-color: rgb(24, 190, 255);
+  border-radius: 100px;
+} */
