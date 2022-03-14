@@ -12,6 +12,7 @@ body {
 .goal-tbl {
   display: flex;
   flex-direction: column;
+  padding-bottom: 50px;
 }
 
 form {
@@ -30,11 +31,11 @@ form input {
   color: white;
   border-radius: 12px;
   border: none;
-  font-size: 22px;
+  font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .done-btn {
   padding-left: 10px;
@@ -42,11 +43,11 @@ form input {
   color: white;
   border-radius: 12px;
   border: none;
-  font-size: 22px;
+  font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .console form {
@@ -72,7 +73,8 @@ form input {
 .label {
   display: flex;
   justify-content: center;
-  padding-bottom: 15px;
+  padding: 20px;
+  font-size: 15px;
 }
 
 td {
