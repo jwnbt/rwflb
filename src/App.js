@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function AddAGoal({ onAdd }) {
@@ -36,7 +38,7 @@ function GoalsConsole() {
         {notDoneGoals.length === 0 ? "" : "complete these goals to change your life!"}
       </div>
       <NotDoneGoalTable goals={notDoneGoals} onAction={handleClick} />
-      <div className="label">{doneGoals.length === 0 ? "" : "done goals"}</div>
+      <div className="label">{doneGoals.length === 0 ? "" : "your life is slowly changing, great work!"}</div>
       <DoneGoalTable goals={doneGoals} onAction={handleClick} />
     </div>
   );
@@ -64,6 +66,7 @@ function DoneGoalTable({ goals, onAction }) {
 function GoalRow({ goal, onAction }) {
   const handleClick = () => {
     onAction(goal);
+    toast("on your way to a better life");
   };
   return (
     <tr className="goal-row ">
@@ -78,9 +81,12 @@ function GoalRow({ goal, onAction }) {
 
 function GoalActionButton({ type, onClick }) {
   return (
-    <button className={`${type}-btn`} onClick={onClick}>
-      {type}
-    </button>
+    <>
+      <button className={`${type}-btn`} onClick={onClick}>
+        {type}
+      </button>
+      <ToastContainer />
+    </>
   );
 }
 
