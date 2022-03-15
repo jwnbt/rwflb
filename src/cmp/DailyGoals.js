@@ -19,6 +19,7 @@ function DailyGoals() {
       <AddAGoal onAdd={handleAdd} />
       <div className="label">
         {notDoneGoals.length === 0 && doneGoals.length === 0 && "Strat tracking some daily goals!"}
+        {notDoneGoals.length === 0 && doneGoals.length > 0 && "Add some more goals!"}
         {notDoneGoals.length === 0 ? "" : "Complete these goals to change your life!"}
       </div>
       <NotDoneGoalTable goals={notDoneGoals} onAction={handleClick} />
