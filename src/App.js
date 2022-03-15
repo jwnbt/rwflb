@@ -1,11 +1,12 @@
-import GoalsConsole from "./cmp/GoalsConsole";
-
+import DailyGoals from "./cmp/DailyGoals";
+import ManageGoals from "./cmp/ManageGoals";
 import "./App.css";
 
 function App() {
   return (
     <div className="app">
-      <GoalsConsole />
+      <DailyGoals />
+      <ManageGoals />
     </div>
   );
 }

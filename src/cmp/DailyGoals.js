@@ -1,8 +1,8 @@
 import { useState } from "react";
 import AddAGoal from "./AddAGoal";
-import "./GoalsConsole.css";
+import "./DailyGoals.css";
 
-function GoalsConsole() {
+function DailyGoals() {
   const [goals, setGoals] = useState([]);
   const handleAdd = (goal) => {
     setGoals((prevGoals) => [...prevGoals, goal]);
@@ -73,4 +73,4 @@ function GoalActionButton({ type, onClick }) {
   );
 }
 
-export default GoalsConsole;
+export default DailyGoals;
