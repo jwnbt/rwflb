@@ -30,6 +30,7 @@ function GoalsConsole() {
   const doneGoals = goals.filter((g) => g.done);
   return (
     <div className="console">
+      {"rwflb"}
       <AddAGoal onAdd={handleAdd} />
       <div className="label">
         {notDoneGoals.length === 0 && doneGoals.length === 0 && "Strat tracking some daily goals!"}
