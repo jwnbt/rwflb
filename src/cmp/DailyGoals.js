@@ -4,6 +4,9 @@ import "./DailyGoals.css";
 
 function DailyGoals() {
   const [goals, setGoals] = useState([]);
+  fetch("https://rwflb.herokuapp.com/goals")
+    .then((res) => res.json())
+    .then((data) => setGoals(data));
   const handleAdd = (goal) => {
     setGoals((prevGoals) => [...prevGoals, goal]);
   };
@@ -18,7 +21,7 @@ function DailyGoals() {
       {"rwflb"}
       <AddAGoal onAdd={handleAdd} />
       <div className="label">
-        {notDoneGoals.length === 0 && doneGoals.length === 0 && "Strat tracking some daily goals!"}
+        {notDoneGoals.length === 0 && doneGoals.length === 0 && "Start tracking some daily goals!"}
         {notDoneGoals.length === 0 && doneGoals.length > 0 && "Add some more goals!"}
         {notDoneGoals.length === 0 ? "" : "Complete these goals to change your life!"}
       </div>
