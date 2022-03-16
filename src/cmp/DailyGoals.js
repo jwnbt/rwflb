@@ -4,6 +4,9 @@ import "./DailyGoals.css";
 
 function DailyGoals() {
   const [goals, setGoals] = useState([]);
+  fetch("https://rwflb.herokuapp.com/goals")
+    .then((res) => res.json())
+    .then((data) => setGoals(data));
   const handleAdd = (goal) => {
     setGoals((prevGoals) => [...prevGoals, goal]);
   };
