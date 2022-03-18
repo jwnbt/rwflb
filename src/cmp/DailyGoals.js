@@ -20,10 +20,6 @@ function DailyGoals() {
   };
   useEffect(() => {
     getGoals();
-    const intervalID = setInterval(() => {
-      getGoals();
-    });
-    return () => clearInterval(intervalID);
   }, []);
 
   const handleClick = (goal) => {
