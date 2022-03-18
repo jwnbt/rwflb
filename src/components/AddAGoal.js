@@ -4,7 +4,7 @@ import "./AddAGoal.css";
 function AddAGoal({ onAdd }) {
   const [goal, setGoal] = useState("");
   const goalToAdd = { name: goal, done: false, date: new Date().toJSON() };
-  const addGoal = () => {
+  const putGoal = () => {
     fetch("https://rwflb.herokuapp.com/goals", {
       method: "PUT",
       headers: {
@@ -17,7 +17,7 @@ function AddAGoal({ onAdd }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    goal !== "" && addGoal();
+    goal !== "" && putGoal();
     setGoal("");
   };
 
