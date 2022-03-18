@@ -3,19 +3,16 @@ import "./AddAGoal.css";
 
 function AddAGoal({ onAdd }) {
   const [goal, setGoal] = useState("");
+  const goalToAdd = { name: goal, done: false, date: new Date().toJSON() };
   const addGoal = () => {
     fetch("https://rwflb.herokuapp.com/goals", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        name: goal,
-        done: false,
-        date: new Date().toJSON()
-      })
+      body: JSON.stringify(goalToAdd)
     });
-    onAdd({ name: goal, done: false, date: new Date().toJSON() });
+    onAdd(goalToAdd);
   };
 
   const handleSubmit = (event) => {
