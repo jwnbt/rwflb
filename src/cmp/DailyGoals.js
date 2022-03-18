@@ -24,8 +24,8 @@ function DailyGoals() {
 
   const handleClick = (goal) => {
     goal.done = !goal.done;
-    updateGoal(goal);
-    // setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
+    // updateGoal(goal);
+    setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
   };
 
   const notDoneGoals = goals.filter((g) => !g.done);
