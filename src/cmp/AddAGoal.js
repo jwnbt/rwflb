@@ -6,6 +6,7 @@ function AddAGoal() {
   const addGoal = () => {
     fetch("https://rwflb.herokuapp.com/goals", {
       method: "PUT",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json"
       },
