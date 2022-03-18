@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AddAGoal.css";
 
-function AddAGoal() {
+function AddAGoal({ onAdd }) {
   const [goal, setGoal] = useState("");
   const addGoal = () => {
     fetch("https://rwflb.herokuapp.com/goals", {
@@ -15,6 +15,7 @@ function AddAGoal() {
         date: new Date().toJSON()
       })
     });
+    onAdd(goal);
   };
 
   const handleSubmit = (event) => {

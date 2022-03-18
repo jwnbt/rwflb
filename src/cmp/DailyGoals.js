@@ -22,6 +22,10 @@ function DailyGoals() {
     getGoals();
   }, []);
 
+  const handleAdd = (goal) => {
+    setGoals((prevGoals) => [...prevGoals, goal]);
+  };
+
   const handleClick = (goal) => {
     goal.done = !goal.done;
     setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
@@ -33,7 +37,7 @@ function DailyGoals() {
 
   return (
     <div className="console">
-      <AddAGoal />
+      <AddAGoal onAdd={handleAdd} />
       <div className="label">
         {notDoneGoals.length === 0 && doneGoals.length === 0 && "Start tracking some daily goals!"}
         {notDoneGoals.length === 0 && doneGoals.length > 0 && "Add some more goals!"}
