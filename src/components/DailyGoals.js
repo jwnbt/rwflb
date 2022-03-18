@@ -21,16 +21,6 @@ function DailyGoals() {
     });
   };
 
-  const deleteGoal = (goal) => {
-    fetch(goalsEndPoint, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(goal)
-    });
-  };
-
   useEffect(() => {
     getGoals();
   }, []);
@@ -43,11 +33,6 @@ function DailyGoals() {
     goal.done = !goal.done;
     setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
     patchGoal(goal);
-  };
-
-  const handleDeleteClick = (goal) => {
-    setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey)]);
-    deleteGoal(goal);
   };
 
   const notDoneGoals = goals.filter((g) => !g.done);
@@ -63,7 +48,7 @@ function DailyGoals() {
       </div>
       <NotDoneGoalTable goals={goals} onAction={handleDoneClick} />
       <div className="label">{doneGoals.length === 0 ? "" : "You're life is slowly changing, great work!"}</div>
-      <DoneGoalTable goals={goals} onAction={handleDoneClick} onDelete={handleDeleteClick} />
+      <DoneGoalTable goals={goals} onAction={handleDoneClick} />
     </div>
   );
 }
@@ -73,7 +58,7 @@ function GoalsTable({ goals, onAction, onDelete }) {
     <table className="goal-tbl">
       <tbody>
         {goals.map((g, id) => {
-          return <GoalRow key={id} goal={g} onAction={onAction} onDelete={onDelete} />;
+          return <GoalRow key={id} goal={g} onAction={onAction} />;
         })}
       </tbody>
     </table>
@@ -85,16 +70,12 @@ function NotDoneGoalTable({ goals, onAction }) {
 }
 
 function DoneGoalTable({ goals, onAction, onDelete }) {
-  return <GoalsTable goals={goals.filter((g) => g.done)} onAction={onAction} onDelete={onDelete} />;
+  return <GoalsTable goals={goals.filter((g) => g.done)} onAction={onAction} />;
 }
 
 function GoalRow({ goal, onAction, onDelete }) {
   const handleClick = () => {
     onAction(goal);
-  };
-
-  const handleDelete = () => {
-    onDelete(goal);
   };
 
   return (
@@ -104,7 +85,6 @@ function GoalRow({ goal, onAction, onDelete }) {
         {!goal.done && <GoalActionButton label="done" className="done-btn" onClick={handleClick} />}
         {goal.done && <GoalActionButton label="undo" className="undo-btn" onClick={handleClick} />}
       </td>
-      <td>{goal.done && <GoalActionButton label="delete" className="delete-btn" onClick={handleDelete} />}</td>
     </tr>
   );
 }
