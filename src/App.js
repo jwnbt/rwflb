@@ -1,4 +1,4 @@
-import DailyGoals from "./cmp/DailyGoals";
+import DailyGoals from "./components/DailyGoals";
 import "./App.css";
 
 function App() {
