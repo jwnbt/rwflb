@@ -4,9 +4,8 @@ import "./AddAGoal.css";
 function AddAGoal() {
   const [goal, setGoal] = useState("");
   const addGoal = () => {
-    fetch("http://localhost:1000/goals", {
+    fetch("https://rwflb.herokuapp.com/goals", {
       method: "PUT",
-      mode: "cors",
       headers: {
         "Content-Type": "application/json"
       },
