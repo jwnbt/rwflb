@@ -5,13 +5,14 @@ import "./DailyGoals.css";
 function DailyGoals() {
   const [goals, setGoals] = useState([]);
   const getGoals = () => {
-    fetch("http://localhost:1000/goals")
+    fetch("http://localhost:1000/goals", { mode: "cors" })
       .then((res) => res.json())
       .then((data) => setGoals(data));
   };
   const updateGoal = (goal) => {
     fetch("http://localhost:1000/goals", {
       method: "PATCH",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json"
       },

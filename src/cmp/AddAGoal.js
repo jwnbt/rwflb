@@ -6,6 +6,7 @@ function AddAGoal() {
   const addGoal = () => {
     fetch("http://localhost:1000/goals", {
       method: "PUT",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json"
       },
