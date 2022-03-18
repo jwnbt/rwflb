@@ -9,7 +9,7 @@ function DailyGoals() {
       .then((res) => res.json())
       .then((data) => setGoals(data));
   };
-  const updateGoal = (goal) => {
+  const patchGoal = (goal) => {
     fetch("https://rwflb.herokuapp.com/goals", {
       method: "PATCH",
       headers: {
@@ -29,7 +29,7 @@ function DailyGoals() {
   const handleClick = (goal) => {
     goal.done = !goal.done;
     setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
-    updateGoal(goal);
+    patchGoal(goal);
   };
 
   const notDoneGoals = goals.filter((g) => !g.done);
