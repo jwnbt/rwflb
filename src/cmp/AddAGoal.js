@@ -1,17 +1,37 @@
 import { useState } from "react";
 import "./AddAGoal.css";
 
-function AddAGoal({ onAdd }) {
+function AddAGoal() {
   const [goal, setGoal] = useState("");
+  const addGoal = () => {
+    fetch("http://localhost:1000/goals", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: goal,
+        done: false,
+        date: new Date().toJSON()
+      })
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    goal !== "" && onAdd({ pkey: Math.random(), name: goal, done: false, date: null });
+    goal !== "" && addGoal();
     setGoal("");
   };
-  const handleChange = (event) => setGoal(event.target.value);
+
   return (
     <form onSubmit={handleSubmit}>
-      <input className="input" type="text" value={goal} placeholder="enter a goal to track" onChange={handleChange} />
+      <input
+        className="input"
+        type="text"
+        value={goal}
+        placeholder="enter a goal to track"
+        onChange={(event) => setGoal(event.target.value)}
+      />
       <input className="submit-btn" type="submit" value="add" />
     </form>
   );

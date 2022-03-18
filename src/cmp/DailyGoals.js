@@ -1,33 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddAGoal from "./AddAGoal";
 import "./DailyGoals.css";
 
 function DailyGoals() {
   const [goals, setGoals] = useState([]);
-  fetch("https://rwflb.herokuapp.com/goals")
-    .then((res) => res.json())
-    .then((data) => setGoals(data));
-  const handleAdd = (goal) => {
-    setGoals((prevGoals) => [...prevGoals, goal]);
+  const getGoals = () => {
+    fetch("http://localhost:1000/goals")
+      .then((res) => res.json())
+      .then((data) => setGoals(data));
   };
+  const updateGoal = (goal) => {
+    fetch("http://localhost:1000/goals", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(goal)
+    });
+  };
+  useEffect(() => {
+    getGoals();
+    const intervalID = setInterval(() => {
+      getGoals();
+    });
+    return () => clearInterval(intervalID);
+  }, []);
+
   const handleClick = (goal) => {
     goal.done = !goal.done;
-    setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
+    updateGoal(goal);
+    // setGoals((prevGoals) => [...prevGoals.filter((g) => g.pkey !== goal.pkey), goal]);
   };
+
   const notDoneGoals = goals.filter((g) => !g.done);
   const doneGoals = goals.filter((g) => g.done);
+
   return (
     <div className="console">
-      {"rwflb"}
-      <AddAGoal onAdd={handleAdd} />
+      <AddAGoal />
       <div className="label">
         {notDoneGoals.length === 0 && doneGoals.length === 0 && "Start tracking some daily goals!"}
         {notDoneGoals.length === 0 && doneGoals.length > 0 && "Add some more goals!"}
         {notDoneGoals.length === 0 ? "" : "Complete these goals to change your life!"}
       </div>
-      <NotDoneGoalTable goals={notDoneGoals} onAction={handleClick} />
+      <NotDoneGoalTable goals={goals} onAction={handleClick} />
       <div className="label">{doneGoals.length === 0 ? "" : "You're life is slowly changing, great work!"}</div>
-      <DoneGoalTable goals={doneGoals} onAction={handleClick} />
+      <DoneGoalTable goals={goals} onAction={handleClick} />
     </div>
   );
 }
