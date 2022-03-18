@@ -1,13 +1,14 @@
 import DailyGoals from "./cmp/DailyGoals";
-import ManageGoals from "./cmp/ManageGoals";
 import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      <DailyGoals />
-      <ManageGoals />
-    </div>
+    <>
+      <div className="logo">{"rwflb"}</div>
+      <div className="app">
+        <DailyGoals />
+      </div>
+    </>
   );
 }
 

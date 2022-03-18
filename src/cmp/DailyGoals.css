@@ -31,10 +31,6 @@
   font-style: bold;
 }
 
-.console {
-  font-size: 200px;
-}
-
 form {
   display: flex;
   flex-direction: row;
