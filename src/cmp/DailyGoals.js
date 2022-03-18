@@ -5,12 +5,12 @@ import "./DailyGoals.css";
 function DailyGoals() {
   const [goals, setGoals] = useState([]);
   const getGoals = () => {
-    fetch("https://rwflb.herokuapp.com//goals")
+    fetch("https://rwflb.herokuapp.com/goals")
       .then((res) => res.json())
       .then((data) => setGoals(data));
   };
   const updateGoal = (goal) => {
-    fetch("https://rwflb.herokuapp.com//goals", {
+    fetch("https://rwflb.herokuapp.com/goals", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
