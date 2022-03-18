@@ -15,7 +15,7 @@ function AddAGoal({ onAdd }) {
         date: new Date().toJSON()
       })
     });
-    onAdd(goal);
+    onAdd({ name: goal, done: false, date: new Date().toJSON() });
   };
 
   const handleSubmit = (event) => {
